@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>gato dançante</title>
+</head>
+<body>
+    <h1>0</h1>
+    <img src="gato/gato1.gif" id="imagem">
+    
+    <script>
+        if (!localStorage.getItem("contador")){
+            localStorage.setItem("contador", 0);
+        }
+        let header = document.querySelector("h1");
+        header.innerHTML = localStorage.getItem("contador")
+        const imagem = document.getElementById('imagem');
+
+        const imagens = [
+            "gato/gato1.gif",
+            "gato/gato2.gif",
+            "gato/gato1.gif",
+            "gato/gato3.gif"
+        ];
+
+        function atualizar(){
+            let contador = localStorage.getItem("contador");
+            contador++;
+            imagem.src = imagens[contador % imagens.length];
+            localStorage.setItem("contador", contador);
+            header.innerHTML = contador;  // Atualiza o <h1>
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(atualizar, 300);}
+        );
+    </script>
+</body>
+</html>

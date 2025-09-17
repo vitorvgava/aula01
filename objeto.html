@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <title>Exemplo JSON e Objetos</title>
+</head>
+<body>
+  <h1>JSON.stringify() e JSON.parse()</h1>
+  <pre id="saida"></pre>
+
+  <script>
+
+    const pessoa = {
+      nome: "João",
+      idade: 25,
+      interesses: ["computação", "futebol", "programação"],
+      endereco: {
+        cidade: "São Paulo",
+        pais: "Brasil"
+      }
+    };
+
+    const pessoaJSON = JSON.stringify(pessoa, null, 2);
+
+
+    const pessoaObj = JSON.parse(pessoaJSON);
+
+    let saida = "";
+    saida += "Objeto original (JavaScript):\n";
+    saida += JSON.stringify(pessoa, null, 2) + "\n\n";
+
+    saida += "Convertido para JSON (string):\n";
+    saida += pessoaJSON + "\n\n";
+
+    saida += "Convertido de volta para objeto:\n";
+    saida += JSON.stringify(pessoaObj, null, 2) + "\n\n";
+
+    // 5. Mostrando que funciona como objeto
+    saida += "Acessando dados do objeto reconvertido:\n";
+    saida += `Nome: ${pessoaObj.nome}\n`;
+    saida += `Idade: ${pessoaObj.idade}\n`;
+    saida += `Cidade: ${pessoaObj.endereco.cidade}\n`;
+
+    // Coloca no <pre>
+    document.getElementById("saida").textContent = saida;
+  </script>
+</body>
+</html>

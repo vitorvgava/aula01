@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primo</title>
+</head>
+<body>
+    <h1>Teste de Primo</h1>
+    <input type="number" placeholder="número" id="texto">
+    <button>Verificar</button>
+    <h2></h2>
+
+    <script>
+        
+        let isPrime = N => {
+            for (let i = 2; i < N; i++)
+                if (N % i == 0)
+                    return false
+            return N > 1
+        }
+
+        let botao = document.querySelector("button")
+        botao.addEventListener("click", () => {
+            let caixa = document.querySelector("#texto")
+            let old = document.querySelector("h2")
+            let numero = parseInt(caixa.value)
+            let output = document.createElement("h2")
+
+            if (isPrime(numero))
+                output.innerHTML = `${numero} é primo`
+            else
+                output.innerHTML = `${numero} não é primo`
+
+            document.body.replaceChild(output, old)
+        });
+    </script>   
+</body>
+</html>
